@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blinks</title>
+    <script src="blinks.js" defer></script>
+    <!-- <script src="trial.js" defer></script> -->
+    <link rel="stylesheet" type="text/css" href="blinks.css"  >
+</head>
+<body>
+    <h1>BLINKING GAME</h1>
+    <div class="container">
+        <div onclick="check(this)" class="box red" id="b1"></div>
+        <div onclick="check(this)" class="box white" id="b2"></div>
+        <div onclick="check(this)" class="box white" id="b3"></div>
+        <div onclick="check(this)" class="box white" id="b4"></div>
+        <div onclick="check(this)" class="box white" id="b5"></div>
+    </div>
+    <button onclick="blink()">Start</button>
+    <!-- <button onclick="stop()">Stop</button> -->
+</body>
+</html>
