@@ -1,44 +1,71 @@
 let boxes=document.querySelectorAll(".box")
-let x;
-let flag=false;
-let y=1;
+let intervalId;
+let Gameflag=false;
+let index=1;
 let globalId="";
-let createdTime,clickedTime,reactionTime;
-function timeset() {
-    
-}
+let createdTime;
+let sr=1;
+
 function blink() {
-    x=setInterval(callback,2000);
+    addLogs("start");
+    intervalId=setInterval(callback,2000);
 }
 function callback() {
-    flag=true;    
-    boxes[(y-1)%boxes.length].classList.remove("red");
-    boxes[(y-1)%boxes.length].classList.add("white");
-
-    boxes[(y)%boxes.length].classList.remove("white");
-    boxes[(y)%boxes.length].classList.add("red");
+    Gameflag=true;    
+    boxes[(index-1)%boxes.length].classList.remove("red");
+    boxes[(index-1)%boxes.length].classList.add("white");
+    
+    boxes[(index)%boxes.length].classList.remove("white");
+    boxes[(index)%boxes.length].classList.add("red");
     createdTime=new Date();
-    y=y+1;
+    index=index+1;
 }
 
-    function check(e) {
-        let currId=e.id;
-        // console.log(currId);
-        if (flag==true && globalId!=currId) {
-            globalId=currId;
-            if (e.classList.contains("red")) {
-                clickedTime=new Date();
-                reactionTime=clickedTime-createdTime;
-                alert("Reaction time: "+ reactionTime + " ms.");
-                location.reload();
-                clearInterval(x);
-            }
-            else{
-                
-            }
+function check(e) {
+    let currId=e.id;
+    // console.log(currId);
+    if (Gameflag==true && globalId!=currId) {
+        globalId=currId;
+        if (e.classList.contains("red")) {
+            addLogs("red");
+            let clickedTime=new Date();
+            let reactionTime=clickedTime-createdTime;
+            // alert("Reaction time: "+ reactionTime + " ms.");
+            // location.reload();
+            clearInterval(intervalId);
         }
         else{
-            alert("you cannot click a box more than once.")
+            addLogs("white");
+            
         }
-        
     }
+    else{
+        alert("you cannot click a box more than once.")
+    }
+    
+}
+
+function addLogs(e) {
+    let table=document.querySelector("table");
+    let rows=document.querySelectorAll('table tr');
+    let row;
+    if(e=="start"){
+        row=`
+        <tr>
+        <td>${sr}</td>
+        <td>You Clicked ${e}</td>
+        <td>abc</td>
+        `
+    }
+    // console.log(e);
+    else{
+        row=`
+            <tr>
+            <td>${sr}</td>
+            <td>You Clicked ${e}</td>
+            <td>abc</td>
+            `
+    }    
+    table.insertRow(rows.length-1).innerHTML=row;
+    sr+=1;
+}
