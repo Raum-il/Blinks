@@ -1,3 +1,17 @@
+body{
+    text-align: center;
+}
+.container{
+    text-align: center;
+}
+.logs{
+    margin-left: 500px;
+}
+table{
+    border: 2 solid black;
+
+}
+
 .box{
     display: inline-block;
     height: 50px;
