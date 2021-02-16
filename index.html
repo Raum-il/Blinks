@@ -7,30 +7,29 @@
     <title>Blinks</title>
     <script src="blinks.js" defer></script>
     <!-- <script src="trial.js" defer></script> -->
-    <link rel="stylesheet" type="text/css" href="blinks.css"  >
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="blinks.css"  >
 
 </head>
 <body>
     <h1>BLINKING GAME</h1>
     <div class="container">
-        <div onclick="check(this)" class="box red" id="b1"></div>
-        <div onclick="check(this)" class="box white" id="b2"></div>
-        <div onclick="check(this)" class="box white" id="b3"></div>
-        <div onclick="check(this)" class="box white" id="b4"></div>
-        <div onclick="check(this)" class="box white" id="b5"></div>
-        <button onclick="blink()">Start</button>
-        <!-- <button onclick="stop()">Stop</button> -->
+        <div class="game">
+            <div onclick="check(this)" class="box red" id="b1"></div>
+            <div onclick="check(this)" class="box white" id="b2"></div>
+            <div onclick="check(this)" class="box white" id="b3"></div>
+            <div onclick="check(this)" class="box white" id="b4"></div>
+            <div onclick="check(this)" class="box white" id="b5"></div><br>
+            <button onclick="blink()">Start</button>
+            <!-- <button onclick="stop()">Stop</button> -->
+        </div>
         <div class="logs">
             <h3>Your click History</h3>
-            <table>
+            <table class="table table-secondary">
                 <tr>
                     <th>Sr No.</th>
                     <th>Activity</th>
                     <th>Time</th>
-                </tr>
-                <tr>
-                    <td></td>
                 </tr>
             </table>
         </div>

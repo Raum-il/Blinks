@@ -8,7 +8,7 @@ let sr=1;
 
 function blink() {
     addLogs("start");
-    intervalId=setInterval(callback,2000);
+    intervalId=setInterval(callback,1000);
 }
 function callback() {
     Gameflag=true;    
@@ -24,23 +24,30 @@ function callback() {
 function check(e) {
     let currId=e.id;
     // console.log(currId);
-    if (Gameflag==true && globalId!=currId) {
-        globalId=currId;
-        if (e.classList.contains("red")) {
-            addLogs("red");
-            let clickedTime=new Date();
-            let reactionTime=clickedTime-createdTime;
-            // alert("Reaction time: "+ reactionTime + " ms.");
-            // location.reload();
-            clearInterval(intervalId);
+    if (Gameflag==true) {
+        if (globalId!=currId) {
+            globalId=currId;
+            if (e.classList.contains("red")) {
+                addLogs("red");
+                let clickedTime=new Date();
+                let reactionTime=clickedTime-createdTime;
+                // alert("Reaction time: "+ reactionTime + " ms.");
+                // location.reload();
+                clearInterval(intervalId);
+            }
+            else{
+                addLogs("white");
+                
+            }
+            
         }
         else{
-            addLogs("white");
-            
+            alert("You cannot click a box more than once.")
+
         }
     }
     else{
-        alert("you cannot click a box more than once.")
+        alert("Please press *START* button")
     }
     
 }
@@ -55,6 +62,7 @@ function addLogs(e) {
         <td>${sr}</td>
         <td>You Clicked ${e}</td>
         <td>abc</td>
+        </tr>
         `
     }
     // console.log(e);
@@ -64,8 +72,9 @@ function addLogs(e) {
             <td>${sr}</td>
             <td>You Clicked ${e}</td>
             <td>abc</td>
+            </tr>
             `
     }    
-    table.insertRow(rows.length-1).innerHTML=row;
+    table.insertRow(rows.length).innerHTML=row;
     sr+=1;
 }
