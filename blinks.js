@@ -58,23 +58,38 @@ function addLogs(e) {
     let row;
     if(e=="start"){
         row=`
-        <tr>
-        <td>${sr}</td>
-        <td>You Clicked ${e}</td>
-        <td>abc</td>
+        <tr class="table table-info">
+        <td class="table-info">${sr}</td>
+        <td class="table-info">You Clicked ${e}</td>
+        <td class="table-info">abc</td>
         </tr>
         `
     }
     // console.log(e);
     else{
-        row=`
-            <tr>
-            <td>${sr}</td>
-            <td>You Clicked ${e}</td>
-            <td>abc</td>
-            </tr>
-            `
+        if (e=="red") {
+            row=`
+                <tr class="table table-success">
+                <td class="table-success">${sr}</td>
+                <td class="table-success">You Clicked ${e}</td>
+                <td class="table-success">abc</td>
+                </tr>
+                `
+            }
+            else{
+            row=`
+                <tr class="table table-danger">
+                <td class="table-danger">${sr}</td>
+                <td class="table-danger">You Clicked ${e}</td>
+                <td class="table-danger">abc</td>
+                </tr>
+                `
+
+        }
     }    
     table.insertRow(rows.length).innerHTML=row;
     sr+=1;
+}
+function stop() {
+    location.reload();
 }
