@@ -33,3 +33,12 @@ h1,h3{
     background-color: white;
 
 }
+.message{
+    font-family: 'Trade Winds', cursive;
+    font-size: 25px;
+    display: none;
+    margin-top: 25px;
+}
+.message p{
+    font-size: 12px;
+}

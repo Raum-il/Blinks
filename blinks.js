@@ -4,6 +4,8 @@ let Gameflag=false;
 let index=1;
 let globalId="";
 let createdTime;
+let reactionTime;
+let time;
 let sr=1;
 
 function blink() {
@@ -23,19 +25,24 @@ function callback() {
 
 function check(e) {
     let currId=e.id;
+    let msg=document.querySelector(".message")
     // console.log(currId);
     if (Gameflag==true) {
         if (globalId!=currId) {
             globalId=currId;
             if (e.classList.contains("red")) {
-                addLogs("red");
                 let clickedTime=new Date();
-                let reactionTime=clickedTime-createdTime;
+                reactionTime=clickedTime-createdTime;
+                msg.style.display="block"
+
                 // alert("Reaction time: "+ reactionTime + " ms.");
                 // location.reload();
                 clearInterval(intervalId);
+                addLogs("red");
             }
             else{
+                let today = new Date();
+                time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
                 addLogs("white");
                 
             }
@@ -56,12 +63,13 @@ function addLogs(e) {
     let table=document.querySelector("table");
     let rows=document.querySelectorAll('table tr');
     let row;
+    let strt=new Date();
     if(e=="start"){
         row=`
         <tr class="table table-info">
         <td class="table-info">${sr}</td>
         <td class="table-info">You Clicked ${e}</td>
-        <td class="table-info">abc</td>
+        <td class="table-info">${strt.getHours() + ":" + strt.getMinutes() + ":" + strt.getSeconds()}</td>
         </tr>
         `
     }
@@ -72,7 +80,7 @@ function addLogs(e) {
                 <tr class="table table-success">
                 <td class="table-success">${sr}</td>
                 <td class="table-success">You Clicked ${e}</td>
-                <td class="table-success">abc</td>
+                <td class="table-success">${reactionTime}</td>
                 </tr>
                 `
             }
@@ -81,7 +89,7 @@ function addLogs(e) {
                 <tr class="table table-danger">
                 <td class="table-danger">${sr}</td>
                 <td class="table-danger">You Clicked ${e}</td>
-                <td class="table-danger">abc</td>
+                <td class="table-danger">${time}</td>
                 </tr>
                 `
 
